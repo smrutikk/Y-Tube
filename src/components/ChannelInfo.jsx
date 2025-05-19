@@ -25,7 +25,17 @@ const ChannelInfo = ({ channel, isSubscribed, onSubscribe, isSaved, onSave, vide
     console.log('Dislike clicked');
   };
 
-  // Removed handleSave as isSaved is a prop controlled by the parent.
+  
+  const handleSave = () => {
+    console.log('Save button clicked');
+    if (isSaved) {
+      console.log('Unsave video');
+      onSave(videoId, false);
+    } else {
+      console.log('Save video');
+      onSave(videoId, true);
+    }
+  };
 
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
@@ -63,7 +73,18 @@ const ChannelInfo = ({ channel, isSubscribed, onSubscribe, isSaved, onSave, vide
           <FiThumbsDown className="mr-2" />
           Dislike
         </button>
-
+         
+         <button
+  onClick={handleSave}
+  className={`flex items-center px-3 py-2 rounded-full ${
+    isSaved
+      ? 'bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-200'
+      : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600'
+  }`}
+>
+  <FiBookmark className="mr-2" />
+  {isSaved ? 'Saved' : 'Save'}
+</button>
 
       </div>
     </div>

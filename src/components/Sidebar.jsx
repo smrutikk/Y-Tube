@@ -18,6 +18,7 @@ const Sidebar = ({ sidebarOpen }) => {
     { to: '/trending', icon: <FiCompass />, text: 'Trending' },
     { to: '/gaming', icon: <FiPlay />, text: 'Gaming' },
     { to: '/liked', icon: <FiThumbsUp />, text: 'Liked' },
+    { to:'/saved', icon: <FiSave />, text: 'Saved' },
   ];
 
   const categoryLinks = [

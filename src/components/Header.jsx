@@ -14,11 +14,14 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
   const navigate = useNavigate();
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
+  e.preventDefault();
+  const trimmedQuery = searchQuery.trim();
+  if (trimmedQuery) {
+    navigate(`/?search=${encodeURIComponent(trimmedQuery)}`);
+  } else {
+    navigate('/');  // Clear search params by navigating to root
+  }
+};
 
   const handleVoiceSearch = () => {
     if (!('webkitSpeechRecognition' in window)) {
